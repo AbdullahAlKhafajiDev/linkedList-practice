@@ -1,5 +1,7 @@
+#Double Linked List in Python
 class Node:
-    def __init__(self, head=None, tail=None):
+    def __init__(self, head=None, tail=None, prev=None):
+        self.prev = prev
         self.head = head
         self.tail = tail
 
@@ -11,24 +13,46 @@ class LinkedList:
         self.headNode = node
     
     def traverse(self):
-        nextLink = self.headNode
+        currentLink = self.headNode
 
-        while(nextLink != None):
-            print(nextLink.head)
-            nextLink = nextLink.tail
+        while(currentLink != None):
+            print(currentLink.head)
+            currentLink = currentLink.tail
 
-node1 = Node('node1')
-node2 = Node('node2')
-node3 = Node('node3')
-node4 = Node('node4')
-node5 = Node('node5')
+    def bruteForceReverse(self):
+        currentLink = self.headNode
+        currentLink.prev = None
+        lastLink = None
+        
+        while(currentLink != None):
+            if (currentLink.tail):
+                currentLink.tail.prev = currentLink
+            lastLink = currentLink
+            currentLink = currentLink.tail
 
-node1.tail = node2
-node2.tail = node3
-node3.tail = node4
-node4.tail = node5
+        currentLink = lastLink
+        while (currentLink != None):
+            print(currentLink.head)
+            currentLink = currentLink.prev
+            
+nodeNames = ['node2', 'node1', 'node4', 'node3', 'node5']
+nodes = []
+index = 0
+
+# creates node objects and links them up depending on the above array.
+
+##########################################
+while(index < len(nodeNames)):
+    node = Node(nodeNames[index])
+    if (nodes != []):
+        nodes[index - 1].tail = node
+    nodes.append(node)
+    index += 1
+##########################################
 
 linkedList = LinkedList()
 
-linkedList.setHead(node1)
+linkedList.setHead(nodes[0])
 linkedList.traverse()
+# print()
+#linkedList.bruteForceReverse()
