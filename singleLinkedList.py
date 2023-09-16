@@ -17,7 +17,23 @@ class LinkedList:
         while (nextLink != None):
             print(nextLink.head)
             nextLink = nextLink.tail
-    
+        
+    def reverseList(self):
+        previousNode = self.headNode
+        currentLink = self.headNode.tail
+        nextLink = None
+        self.headNode.tail = None
+
+        while(currentLink != None):
+            nextLink = currentLink.tail
+
+            currentLink.tail = previousNode
+            previousNode = currentLink
+
+            currentLink = nextLink
+        
+        self.headNode = previousNode
+
     def size(self):
         count = 0
         nextLink = self.headNode
@@ -38,11 +54,15 @@ node4 = Node('fourthNode')
 node5 = Node('fifthNode')
 
 linkedList.setHead(node1)
-node1.tail = node5
-node5.tail = node4
-node4.tail = node2
+node1.tail = node2
 node2.tail = node3
+node3.tail = node4
+node4.tail = node5
 
+linkedList.reverseList()
 linkedList.traverse()
 
 print(f'\nsize of linked list: {linkedList.size()}')
+
+# reversing a linked list
+
