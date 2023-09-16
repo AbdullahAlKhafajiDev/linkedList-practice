@@ -22,7 +22,13 @@ class LinkedList:
         previousNode = self.headNode
         currentLink = self.headNode.tail
         nextLink = None
-        self.headNode.tail = None
+
+        #because otherwise when the list is reversed the head node
+        #would route back towards the node right before it
+        #and that node would lead back towards the head node resulting
+        #in an endless loop.
+        self.headNode.tail = None #turns the head node into a tail node with
+                                  #nothing it routes to.
 
         while(currentLink != None):
             nextLink = currentLink.tail
