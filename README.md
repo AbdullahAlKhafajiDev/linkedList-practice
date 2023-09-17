@@ -1,4 +1,4 @@
-# Practicing Data Structures and Algorithm
+# Practicing Data Structures and Algorithms
 
 ## Linked Lists
 I practiced making Single and Double Linked List data structure and added methods to access and store the data. <br>
