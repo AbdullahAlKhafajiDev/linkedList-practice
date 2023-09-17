@@ -22,24 +22,23 @@ class LinkedList:
     def bruteForceReverse(self):
         currentLink = self.headNode
         currentLink.prev = None
-        lastLink = None
+        previousLink = None
         
         while(currentLink != None):
             if (currentLink.tail):
                 currentLink.tail.prev = currentLink
-            lastLink = currentLink
+            previousLink = currentLink
             currentLink = currentLink.tail
 
-        currentLink = lastLink
+        currentLink = previousLink
         while (currentLink != None):
             print(currentLink.head)
             currentLink = currentLink.prev
             
-nodeNames = ['node2', 'node1', 'node4', 'node3', 'node5']
+# creates node objects and links them up depending on the below array.
+nodeNames = ['node1', 'node2', 'node3', 'node4', 'node5']
 nodes = []
 index = 0
-
-# creates node objects and links them up depending on the above array.
 
 ##########################################
 while(index < len(nodeNames)):
@@ -55,4 +54,4 @@ linkedList = LinkedList()
 linkedList.setHead(nodes[0])
 linkedList.traverse()
 # print()
-#linkedList.bruteForceReverse()
+linkedList.bruteForceReverse()
